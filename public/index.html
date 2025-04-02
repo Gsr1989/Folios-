@@ -1,1 +1,19 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Consulta tu Folio</title></head>
+<body>
+  <h1>Consulta tu Folio</h1>
+  <input type="text" id="folio" placeholder="Ingresa tu folio">
+  <button onclick="consultarFolio()">Consultar</button>
+  <pre id="resultado"></pre>
+  <script>
+    async function consultarFolio() {
+      const folio = document.getElementById('folio').value;
+      const res = await fetch(`/api/consultar/${folio}`);
+      const datos = await res.json();
+      document.getElementById('resultado').textContent = JSON.stringify(datos, null, 2);
+    }
+  </script>
+</body>
+</html>
